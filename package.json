@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "prepare": "npm run prepublishOnly",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run verify_all && npm run build",
     "verify_all": "npm run typecheck && npm test && npm run test_prettier && changelog-verify CHANGELOG.md",
     "typecheck": "tsc --noEmit",
@@ -13,7 +13,7 @@
     "test_prettier": "prettier ./{src,test}/**/*.{js,ts,tsx} --list-different",
     "prettier": "prettier ./{src,test}/**/*.{js,ts,tsx} --write",
     "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
-    "build": "del lib && tsc --pretty"
+    "build": "del-cli lib && tsc --pretty"
   },
   "engines": {
     "node": ">8.0.0"
